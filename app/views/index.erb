@@ -1,23 +1,18 @@
-<div class="container">
-  <h1>Welcome to Sinatra!</h1>
-  <p>Hello, world!</p>
+<h4> List of URLS </h4>
+<% if @new_url == false %>
+  <h2>URL not valid</h2>
+<% end %>
 
-  <table>
-    <tr>
-      <th>File Description</th>
-      <th>File Location</th>
-    </tr>
-    <tr>
-      <td>This view file</td>
-      <td><code><%= __FILE__.gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The layout file</td>
-      <td><code><%= File.expand_path('../layout.erb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-    <tr>
-      <td>The current controller</td>
-      <td><code><%= File.expand_path('../../controllers/index.rb', __FILE__).gsub(Sinatra::Application.root, '') %></code></td>
-    </tr>
-  </table>
-</div>
+<form action='/urls' method='post'>
+  <h5>Enter a new URL here:
+    <input type="text" name="new_url" value="http://www.">
+    <input type="submit" value="Submit!">
+  </h5>
+</form>
+
+<table>
+<tr><th>Long</th><th>Short</th></tr>
+<% @all_the_urls.each do |the_url| %>
+<tr><td><%= the_url.long %></td> <td><%=the_url.short %></td> </tr>
+<% end %>
+</table>
