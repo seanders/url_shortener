@@ -1,0 +1,20 @@
+<h4> Your Links </h4>
+
+<!-- LOGOUT -->
+<form action='/logout' method='post'>
+  <input type='submit' value='Logout'>
+</form>
+
+<form action='/urls' method='post'>
+  <h5>Enter a new URL here:</h5>
+    <input type="text" name="new_url" value="http://www.">
+    <input type="submit" value="Submit!">
+</form>
+
+<table>
+  <tr><th>Long</th><th>Short</th><th>Clicks</th></tr>
+  <% @user_urls.each do |the_url| %>
+  <tr><td><%= the_url.long %></td> <td><%=the_url.short %></td><td><%= the_url.click_count %></td></tr>
+  <% end %>
+</table>
+

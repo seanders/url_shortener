@@ -1,7 +1,22 @@
-<h4> List of URLS </h4>
+<h4> PUBLIC URLS </h4>
 <% if @new_url == false %>
-  <h2>URL not valid</h2>
+<h2>URL not valid</h2>
 <% end %>
+
+<form action='/login' method='post'>
+
+  <p>Email:    <input type='email' name='email'></p>
+  <p>Password: <input type='password' name='password'></p>
+  <p><input type='submit' value="Login"></p>
+
+</form>
+
+<!-- LOGOUT -->
+<form action='/logout' method='post'>
+  <input type='submit' value='Logout'>
+</form>
+
+<p><a href='/create_user'>Click here to create an account</a></p>
 
 <form action='/urls' method='post'>
   <h5>Enter a new URL here:
@@ -11,8 +26,9 @@
 </form>
 
 <table>
-<tr><th>Long</th><th>Short</th></tr>
-<% @all_the_urls.each do |the_url| %>
-<tr><td><%= the_url.long %></td> <td><%=the_url.short %></td> </tr>
-<% end %>
+  <tr><th>Long</th><th>Short</th></tr>
+  <% @all_the_urls.each do |the_url| %>
+  <tr><td><%= the_url.long %></td> <td><%=the_url.short %></td> </tr>
+  <% end %>
 </table>
+
